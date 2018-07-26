@@ -42,6 +42,6 @@ RUN chown md:md /var/log/apache2
 RUN chmod 0755 /etc/init.d/majordomo
 RUN update-rc.d majordomo defaults
 RUN service apache2 start
-RUN service majordomo start
+
 
 EXPOSE 80
