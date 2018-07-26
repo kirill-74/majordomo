@@ -7,7 +7,7 @@
 * @version 1.1
 */
 
-Define('DB_HOST', '192.168.222.34');
+Define('DB_HOST', '192.168.1.5');
 Define('DB_NAME', 'db_terminal');
 Define('DB_USER', 'majordomo');
 Define('DB_PASSWORD', 'majordomo');
