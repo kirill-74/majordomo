@@ -15,9 +15,6 @@ RUN apt-get install -y dbconfig-mysql mysql-client-5.7 mysql-client-core-5.7 mys
 RUN apt-get install -y curl libcurl3 libcurl3-dev
 RUN apt-get install -y nano wget unzip sudo ssh
 
-//RUN useradd md -d /home/md -G sudo -m -U
-//RUN echo "md" >> passwd md
-//RUN usermod -aG sudo md
 RUN service apache2 stop
 RUN a2enmod rewrite
 RUN ln -s /usr/share/phpmyadmin /var/www/phpmyadmin
@@ -31,13 +28,11 @@ RUN cp -r /root/majordomo-master/.htaccess /var/www
 RUN rm -Rf /root/majordomo-master
 
 ADD config.php /var/www/config.php
-//ADD envvars /etc/apache2/envvars
 ADD apache2.conf /etc/apache2/apache2.conf
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD php.apache.ini /etc/php/7.0/apache2/php.ini
 ADD php.cli.ini /etc/php/7.0/cli/php.ini
 ADD majordomo.service /etc/systemd/system/majordomo.service
-//ADD majordomo /etc/init.d/majordomo
 
 VOLUME /var/www
 VOLUME /etc
@@ -52,9 +47,6 @@ RUN chown www-data:www-data /var/lock/apache2
 RUN chown www-data:www-data /var/log/apache2
 RUN systemctl enable majordomo
 RUN apache2ctl restart
-//RUN chmod 0755 /etc/init.d/majordomo
-//RUN update-rc.d majordomo defaults
-//RUN service apache2 start
 
 
 EXPOSE 80
