@@ -12,7 +12,7 @@ RUN apt-get install -y php7.0-opcache php7.0-readline
 RUN apt-get install -y php7.0-xml
 RUN apt-get install -y dbconfig-mysql mysql-client-5.7 mysql-client-core-5.7 mysql-common php-mysql php7.0-mysql
 RUN apt-get install -y curl libcurl3 libcurl3-dev
-RUN apt-get install -y nano wget unzip sudo #ssh
+RUN apt-get install -y nano wget unzip sudo mc htop
 
 RUN service apache2 stop
 RUN a2enmod rewrite
@@ -31,10 +31,8 @@ ADD apache2.conf /etc/apache2/apache2.conf
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD php.apache.ini /etc/php/7.0/apache2/php.ini
 ADD php.cli.ini /etc/php/7.0/cli/php.ini
-#ADD majordomo.service /etc/systemd/system/majordomo.service
 
-VOLUME /var/www
-VOLUME /etc
+VOLUME ["/var/www","/etc"]
 
 RUN cd /var/www
 RUN chown www-data:www-data /var/www
@@ -45,8 +43,8 @@ RUN chmod -Rf 0777 /var//www
 RUN chown www-data:www-data /var/lock/apache2
 RUN chown www-data:www-data /var/log/apache2
 
-RUN service apache2 start
-#CMD ["/usr/sbin/apachectl", "start"]
+#RUN service apache2 start
+CMD ["/usr/sbin/apachectl", "start"]
 CMD ["php", "/var/www/cycle.php"]
 
 
