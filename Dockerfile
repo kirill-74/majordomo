@@ -31,6 +31,7 @@ ADD apache2.conf /etc/apache2/apache2.conf
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD php.apache.ini /etc/php/7.0/apache2/php.ini
 ADD php.cli.ini /etc/php/7.0/cli/php.ini
+ADD start.sh /start.sh
 
 VOLUME ["/var/www","/etc"]
 
@@ -44,8 +45,8 @@ RUN chown www-data:www-data /var/lock/apache2
 RUN chown www-data:www-data /var/log/apache2
 
 #RUN service apache2 start
-CMD ["/usr/sbin/apachectl", "start"]
-CMD ["php", "/var/www/cycle.php"]
+#CMD ["/usr/sbin/apachectl", "start"]
+CMD ["/start.sh"]
 
 
 EXPOSE 80
