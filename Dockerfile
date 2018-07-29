@@ -2,8 +2,7 @@ FROM ubuntu:16.04
 
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -y  aptitude
-RUN aptitude install -y ntp ntpdate
+
 RUN apt-get install -y apache2 apache2-bin apache2-data apache2-utils 
 RUN apt-get install -y libapache2-mod-php libapache2-mod-php7.0 
 RUN apt-get install -y php7.0-bz2 php7.0-cli php7.0-common 
