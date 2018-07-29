@@ -12,7 +12,7 @@ RUN apt-get install -y php7.0-opcache php7.0-readline
 RUN apt-get install -y php7.0-xml
 RUN apt-get install -y dbconfig-mysql mysql-client-5.7 mysql-client-core-5.7 mysql-common php-mysql php7.0-mysql
 RUN apt-get install -y curl libcurl3 libcurl3-dev
-RUN apt-get install -y nano wget unzip sudo ssh
+RUN apt-get install -y nano wget unzip sudo #ssh
 
 RUN service apache2 stop
 RUN a2enmod rewrite
@@ -45,7 +45,8 @@ RUN chmod -Rf 0777 /var//www
 RUN chown www-data:www-data /var/lock/apache2
 RUN chown www-data:www-data /var/log/apache2
 
-CMD ["/usr/sbin/apachectl", "start"]
+RUN service apache2 start
+#CMD ["/usr/sbin/apachectl", "start"]
 CMD ["php", "/var/www/cycle.php"]
 
 
