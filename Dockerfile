@@ -10,7 +10,7 @@ RUN apt-get install -y php7.0-bz2 php7.0-cli php7.0-common
 RUN apt-get install -y php7.0-curl php7.0-gd php7.0-json php7.0-mbstring 
 RUN apt-get install -y php7.0-mcrypt php7.0-mysql 
 RUN apt-get install -y php7.0-opcache php7.0-readline 
-RUN apt-get install -y php7.0-xml phpmyadmin
+RUN apt-get install -y php7.0-xml
 RUN apt-get install -y dbconfig-mysql mysql-client-5.7 mysql-client-core-5.7 mysql-common php-mysql php7.0-mysql
 RUN apt-get install -y curl libcurl3 libcurl3-dev
 RUN apt-get install -y nano wget unzip sudo ssh
