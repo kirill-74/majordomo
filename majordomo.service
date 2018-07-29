@@ -1,0 +1,12 @@
+﻿[Unit]
+Description=MajorDoMo
+
+[Service]
+Requires=apache2.service
+Type=simple
+WorkingDirectory=/var/www
+ExecStart=/usr/bin/php /var/www/cycle.php
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
