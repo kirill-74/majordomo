@@ -43,6 +43,7 @@ RUN chmod -Rf 0777 /var/www/*
 RUN chmod -Rf 0777 /var//www
 RUN chown www-data:www-data /var/lock/apache2
 RUN chown www-data:www-data /var/log/apache2
+RUN chmod +x /*.sh
 
 #RUN service apache2 start
 #CMD ["/usr/sbin/apachectl", "start"]
