@@ -31,7 +31,7 @@ ADD apache2.conf /etc/apache2/apache2.conf
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD php.apache.ini /etc/php/7.0/apache2/php.ini
 ADD php.cli.ini /etc/php/7.0/cli/php.ini
-ADD majordomo.service /etc/systemd/system/majordomo.service
+#ADD majordomo.service /etc/systemd/system/majordomo.service
 
 VOLUME /var/www
 VOLUME /etc
@@ -44,9 +44,9 @@ RUN chmod -Rf 0777 /var/www/*
 RUN chmod -Rf 0777 /var//www
 RUN chown www-data:www-data /var/lock/apache2
 RUN chown www-data:www-data /var/log/apache2
-RUN systemctl enable majordomo
-RUN apache2ctl restart
+
+CMD ["/usr/sbin/apachectl", "start"]
+CMD ["php", "/var/www/cycle.php"]
 
 
 EXPOSE 80
-EXPOSE 22
